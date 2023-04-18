@@ -7,8 +7,6 @@ const ColorSwitchMode = () => {
       <Switch
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
-        justifyContent={"space-between"}
-        padding={"10px"}
         colorScheme={"green"}
       />
       <Text>Dark mode</Text>
