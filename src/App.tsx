@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import GenreContainer from "./components/GenreContainer";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       </GridItem>
       <Show above='lg'>
         <GridItem area='aside' paddingX='5px'>
-          <GenreList />
+          <GenreContainer />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
