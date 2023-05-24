@@ -5,9 +5,14 @@ import getCroppedImage from "../services/image-url";
 interface GenreListProps {
   genres: Genre[];
   onSelectGenre(genre: Genre | null): void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ genres, onSelectGenre }: GenreListProps) => {
+const GenreList = ({
+  genres,
+  onSelectGenre,
+  selectedGenre,
+}: GenreListProps) => {
   return (
     <List>
       {genres.map((genre) => (
@@ -21,6 +26,7 @@ const GenreList = ({ genres, onSelectGenre }: GenreListProps) => {
             <Button
               fontSize='lg'
               variant='link'
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => {
                 onSelectGenre(genre);
               }}>

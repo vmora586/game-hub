@@ -4,8 +4,9 @@ import GenreSkeleton from "./GenreSkeleton";
 
 interface GenreContainerProps {
   onSelectGenre(genre: Genre): void;
+  selectedGenre: Genre | null;
 }
-function GenreContainer({ onSelectGenre }: GenreContainerProps) {
+function GenreContainer({ selectedGenre, onSelectGenre }: GenreContainerProps) {
   const { data, isLoading, error } = useGenres();
   {
     if (error) return null;
@@ -13,7 +14,11 @@ function GenreContainer({ onSelectGenre }: GenreContainerProps) {
   return (
     <>
       {isLoading && <GenreSkeleton />}
-      <GenreList genres={data} onSelectGenre={onSelectGenre} />
+      <GenreList
+        genres={data}
+        onSelectGenre={onSelectGenre}
+        selectedGenre={selectedGenre}
+      />
     </>
   );
 }
