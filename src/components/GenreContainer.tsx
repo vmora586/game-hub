@@ -1,15 +1,19 @@
-import { Text } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import GenreList from "./GenreList";
 import GenreSkeleton from "./GenreSkeleton";
 
-function GenreContainer() {
+interface GenreContainerProps {
+  onSelectGenre(genre: Genre): void;
+}
+function GenreContainer({ onSelectGenre }: GenreContainerProps) {
   const { data, isLoading, error } = useGenres();
+  {
+    if (error) return null;
+  }
   return (
     <>
-      {error && <Text>{error}</Text>}
       {isLoading && <GenreSkeleton />}
-      <GenreList genres={data} />
+      <GenreList genres={data} onSelectGenre={onSelectGenre} />
     </>
   );
 }
